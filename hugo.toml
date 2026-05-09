@@ -1,0 +1,129 @@
+# ==========================================================================
+# Hugo + PaperMod 配置 — 极简黑白 / 文字优先
+# 文档:https://github.com/adityatelange/hugo-PaperMod/wiki
+# ==========================================================================
+
+baseURL = "https://YOUR_USERNAME.github.io/"   # ← 部署后改成你的 username.github.io
+title = "Jiaxin's Notes"                       # ← 改成你想要的站名
+theme = "PaperMod"
+
+languageCode = "en-us"
+defaultContentLanguage = "en"
+hasCJKLanguage = true                          # 中英混排时正确处理空格与字数统计
+
+enableRobotsTXT = true
+enableEmoji = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+
+pagination.pagerSize = 10
+
+# 代码高亮
+[markup]
+  [markup.highlight]
+    noClasses = false                          # 用 CSS class 高亮,跟随 light/dark
+    codeFences = true
+    guessSyntax = true
+    lineNos = false
+    style = "github"
+  [markup.goldmark.renderer]
+    unsafe = true                              # 允许文章里写 raw HTML(KaTeX 之类要用)
+
+# 顶部菜单
+[[menu.main]]
+  identifier = "posts"
+  name = "Posts"
+  url = "/posts/"
+  weight = 10
+
+[[menu.main]]
+  identifier = "archives"
+  name = "Archives"
+  url = "/archives/"
+  weight = 20
+
+[[menu.main]]
+  identifier = "search"
+  name = "Search"
+  url = "/search/"
+  weight = 30
+
+[[menu.main]]
+  identifier = "about"
+  name = "About"
+  url = "/about/"
+  weight = 40
+
+# 输出格式 — search 页面需要 JSON
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+# ==========================================================================
+# PaperMod 主题参数
+# ==========================================================================
+[params]
+  env = "production"
+  description = "Notes on DNA sequence modeling, genomic foundation models, and ML for biology."
+  author = "Jiaxin"
+  defaultTheme = "auto"                        # auto / light / dark
+  disableThemeToggle = false
+
+  # —— 极简文字优先的关键开关 ——
+  ShowReadingTime = true
+  ShowWordCount = true
+  ShowShareButtons = false                     # 关掉分享按钮
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowToc = true
+  TocOpen = false
+  ShowRssButtonInSectionTermList = true
+  comments = false                             # 评论默认关,要开看 README 末尾说明
+  hidemeta = false
+  hideSummary = false
+
+  # 首页样式 — profileMode 显示一段简介 + 链接;关掉后是文章列表流
+  [params.profileMode]
+    enabled = false
+    title = "Jiaxin"
+    subtitle = "DNA sequence modeling, genomic ML, and adjacent ideas."
+    imageUrl = ""
+    imageWidth = 120
+    imageHeight = 120
+    buttons = [
+      { name = "Posts", url = "posts" },
+      { name = "Archives", url = "archives" },
+    ]
+
+  # 首页用列表流(更纯文字)
+  [params.homeInfoParams]
+    Title = "Hi 👋"
+    Content = """
+Welcome. I write here about **DNA sequence modeling**, genomic foundation models, and adjacent ideas in ML for biology.
+
+Posts are usually paper notes, code walkthroughs, or half-formed thoughts I want to come back to.
+"""
+
+  # 社交链接(留空别的图标自动消失)
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/YOUR_USERNAME"
+  [[params.socialIcons]]
+    name = "rss"
+    url = "/index.xml"
+
+  # Fuse.js 搜索
+  [params.fuseOpts]
+    isCaseSensitive = false
+    shouldSort = true
+    location = 0
+    distance = 1000
+    threshold = 0.4
+    minMatchCharLength = 0
+    keys = ["title", "permalink", "summary", "content"]
+
+  # —— 字体:文字优先,用系统衬线 + 等宽 ——
+  [params.assets]
+    disableFingerprinting = false
+    favicon = "/favicon.ico"

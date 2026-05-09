@@ -1,0 +1,97 @@
+/* ==========================================================================
+ * 极简黑白覆盖 — 放在 assets/css/extended/ 里 PaperMod 会自动加载
+ * ========================================================================== */
+
+:root {
+  --gap: 24px;
+  --content-gap: 20px;
+  --nav-width: 1024px;
+  --main-width: 720px;          /* 文字优先:窄一些更易读 */
+  --header-height: 60px;
+  --footer-height: 60px;
+  --radius: 0px;                /* 直角,去掉圆角的"现代感" */
+
+  /* light:近黑文字 + 米白底 */
+  --theme: #fafaf7;
+  --entry: #ffffff;
+  --primary: #111111;
+  --secondary: #4a4a4a;
+  --tertiary: #d6d6d2;
+  --content: #1a1a1a;
+  --code-block-bg: #f4f4f1;
+  --code-bg: #f0f0ec;
+  --border: #e5e5e0;
+}
+
+.dark {
+  /* dark:深灰底 + 浅灰文字,不用纯黑纯白 */
+  --theme: #111111;
+  --entry: #161616;
+  --primary: #e8e8e8;
+  --secondary: #b0b0b0;
+  --tertiary: #2a2a2a;
+  --content: #d8d8d8;
+  --code-block-bg: #1c1c1c;
+  --code-bg: #1c1c1c;
+  --border: #2a2a2a;
+}
+
+/* —— typography:衬线正文,等宽代码 —— */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-feature-settings: "kern", "liga";
+  -webkit-font-smoothing: antialiased;
+}
+
+.post-content {
+  font-family: "Iowan Old Style", "Palatino", "Georgia", "Songti SC", serif;
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+code, pre, .post-content code {
+  font-family: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.92em;
+}
+
+/* 标题更紧凑、不用粗黑 */
+.post-title { font-weight: 600; letter-spacing: -0.01em; }
+.post-content h1, .post-content h2, .post-content h3 {
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+/* 链接:下划线优先,色彩克制 */
+.post-content a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+.post-content a:hover { text-decoration-thickness: 2px; }
+
+/* 代码块边框淡一些 */
+.post-content pre {
+  border: 1px solid var(--border);
+  border-radius: 2px;
+}
+
+/* 引用块 */
+.post-content blockquote {
+  border-left: 2px solid var(--secondary);
+  color: var(--secondary);
+  font-style: italic;
+}
+
+/* 主菜单弱化 */
+.nav .logo a { font-weight: 600; }
+#menu a { color: var(--secondary); }
+#menu a:hover { color: var(--primary); }
+
+/* 文章列表项之间分隔线更细 */
+.post-entry { border: none; border-bottom: 1px solid var(--border); border-radius: 0; }
+.post-entry:hover { background: transparent; transform: none; box-shadow: none; }
+
+/* 去掉首页 hover 抬起阴影,保持平面 */
+.first-entry, .post-entry { box-shadow: none !important; }

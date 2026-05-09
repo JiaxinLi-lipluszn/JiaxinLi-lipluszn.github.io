@@ -1,0 +1,27 @@
+# Hugo 构建产物
+/public/
+/resources/_gen/
+/.hugo_build.lock
+
+# 编辑器 / 系统
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Node(部分主题需要)
+node_modules/
+package-lock.json
+
+# 本地配置覆写
+.env
+.env.local
+hugo.local.toml
+config.local.toml
+
+# 沙箱里删不掉的孤儿 — 在 Mac 本地 rm -rf 一下就行
+.git.broken
+themes/PaperMod/.git.broken
+themes/PaperMod/papermod-test
