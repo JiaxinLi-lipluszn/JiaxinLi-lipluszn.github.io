@@ -1,0 +1,62 @@
+{{- define "main" }}
+
+<article class="encyclopedia-entry">
+
+  <div class="entry-masthead">
+    <span class="entry-galactica">encyclopedia galactica</span>
+    <span class="entry-vol">vol. iii &nbsp;·&nbsp; p. 41,772</span>
+  </div>
+
+  <h1 class="entry-headword">LI, JIAXIN</h1>
+
+  <div class="entry-body">
+    <p>
+      Doctoral candidate in the Tri-Institutional program for Computational
+      Biology &amp; Medicine (New York, Sol-3, early
+      <span class="entry-sc">21st</span> century). Of itinerant undergraduate
+      education across two institutions of the pre-Foundation era:
+      <span class="entry-sc">Beijing Normal University</span>; the
+      <span class="entry-sc">University of Wisconsin&ndash;Madison</span>
+      (transferred, graduated).
+    </p>
+    <p>
+      Of interest to later historians as an early student of
+      <strong>DNA sequence modeling</strong> &mdash; the systematic
+      application of large neural architectures to the four-letter alphabet
+      that, prior to formal recognition of the encoding, constituted the
+      operational manuscript of terrestrial biology.
+    </p>
+    <p>
+      Surviving notes &mdash; preserved as ephemeral hypertext at this
+      location &mdash; concern paper readings, code experiments, and what
+      scholars of the period would later identify as
+      <em>"open questions but for the obvious answer."</em>
+    </p>
+  </div>
+
+  <nav class="entry-nav">
+    <a href="{{ "posts/"    | relURL }}">posts</a>
+    <span class="entry-nav-sep">·</span>
+    <a href="{{ "archives/" | relURL }}">archives</a>
+    <span class="entry-nav-sep">·</span>
+    <a href="{{ "about/"    | relURL }}">about</a>
+    <span class="entry-nav-sep">·</span>
+    <a href="https://github.com/JiaxinLi-lipluszn" rel="noopener" target="_blank">github</a>
+  </nav>
+
+  <div class="entry-recent">
+    <div class="entry-recent-label">recent fragments</div>
+    {{- $posts := where site.RegularPages "Section" "posts" | first 5 }}
+    {{- range $posts }}
+      <a class="entry-recent-item" href="{{ .Permalink }}">
+        <span class="entry-recent-date">{{ .Date.Format "2006-01-02" }}</span>
+        <span class="entry-recent-title">{{ .Title }}</span>
+      </a>
+    {{- else }}
+      <div class="entry-recent-empty">(the record is currently sparse.)</div>
+    {{- end }}
+  </div>
+
+</article>
+
+{{- end }}
