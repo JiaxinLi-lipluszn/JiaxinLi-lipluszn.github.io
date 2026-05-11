@@ -1,5 +1,65 @@
 {{- define "main" }}
 
+{{- if eq .Lang "zh" }}
+{{/* ====================== 中文版 ====================== */}}
+<article class="encyclopedia-entry">
+
+  <div class="entry-masthead">
+    <span class="entry-galactica">银河百科全书</span>
+    <span class="entry-vol">第三卷 &nbsp;·&nbsp; 第 41,772 页</span>
+  </div>
+
+  <h1 class="entry-headword">李嘉鑫</h1>
+
+  <div class="entry-body entry-body-zh">
+    <p>
+      二十一世纪初的计算生物学博士研究生,就读于纽约(地球三号星)
+      <span class="entry-sc">三校联合计算生物医学博士项目</span>。
+      前基地时代游学于两所院校:
+      <span class="entry-sc">北京师范大学</span>;
+      <span class="entry-sc">威斯康星大学麦迪逊分校</span>(转学,毕业)。
+    </p>
+    <p>
+      后世史家所关注者,为其早期从事的
+      <strong>DNA 序列建模</strong> ——
+      即将大规模神经网络架构系统性应用于一种四字母的字母表;
+      在该字母表被正式认定为编码系统之前,
+      它构成了地球生物学事实上的操作手稿。
+    </p>
+    <p>
+      仅存的笔记 —— 以易朽的超文本形式保存于此 ——
+      涉及论文阅读、代码实验,以及当时学者后来归类为
+      <em>「除显然之答案外的开放性问题」</em>之事。
+    </p>
+  </div>
+
+  <nav class="entry-nav">
+    <a href="{{ "posts/"    | relLangURL }}">文章</a>
+    <span class="entry-nav-sep">·</span>
+    <a href="{{ "archives/" | relLangURL }}">归档</a>
+    <span class="entry-nav-sep">·</span>
+    <a href="{{ "about/"    | relLangURL }}">关于</a>
+    <span class="entry-nav-sep">·</span>
+    <a href="https://github.com/JiaxinLi-lipluszn" rel="noopener" target="_blank">github</a>
+  </nav>
+
+  <div class="entry-recent">
+    <div class="entry-recent-label">近期片段</div>
+    {{- $posts := where (where site.RegularPages "Lang" .Lang) "Section" "posts" | first 5 }}
+    {{- range $posts }}
+      <a class="entry-recent-item" href="{{ .Permalink }}">
+        <span class="entry-recent-date">{{ .Date.Format "2006-01-02" }}</span>
+        <span class="entry-recent-title">{{ .Title }}</span>
+      </a>
+    {{- else }}
+      <div class="entry-recent-empty">(目前记录稀疏。)</div>
+    {{- end }}
+  </div>
+
+</article>
+
+{{- else }}
+{{/* ====================== English (default) ====================== */}}
 <article class="encyclopedia-entry">
 
   <div class="entry-masthead">
@@ -35,18 +95,18 @@
   </div>
 
   <nav class="entry-nav">
-    <a href="{{ "posts/"    | relURL }}">posts</a>
+    <a href="{{ "posts/"    | relLangURL }}">posts</a>
     <span class="entry-nav-sep">·</span>
-    <a href="{{ "archives/" | relURL }}">archives</a>
+    <a href="{{ "archives/" | relLangURL }}">archives</a>
     <span class="entry-nav-sep">·</span>
-    <a href="{{ "about/"    | relURL }}">about</a>
+    <a href="{{ "about/"    | relLangURL }}">about</a>
     <span class="entry-nav-sep">·</span>
     <a href="https://github.com/JiaxinLi-lipluszn" rel="noopener" target="_blank">github</a>
   </nav>
 
   <div class="entry-recent">
     <div class="entry-recent-label">recent fragments</div>
-    {{- $posts := where site.RegularPages "Section" "posts" | first 5 }}
+    {{- $posts := where (where site.RegularPages "Lang" .Lang) "Section" "posts" | first 5 }}
     {{- range $posts }}
       <a class="entry-recent-item" href="{{ .Permalink }}">
         <span class="entry-recent-date">{{ .Date.Format "2006-01-02" }}</span>
@@ -58,5 +118,7 @@
   </div>
 
 </article>
+
+{{- end }}
 
 {{- end }}

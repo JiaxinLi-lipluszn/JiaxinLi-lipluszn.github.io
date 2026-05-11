@@ -1,15 +1,15 @@
 # ==========================================================================
-# Hugo + PaperMod 配置 — 极简黑白 / 文字优先
+# Hugo + PaperMod 配置 — 中英双语,英文默认,极简黑白文字优先
 # 文档:https://github.com/adityatelange/hugo-PaperMod/wiki
 # ==========================================================================
 
 baseURL = "https://jiaxinli-lipluszn.github.io/"
-title = "Jiaxin Li"                            # 站名,出现在 tab title 和 header
 theme = "PaperMod"
 
-languageCode = "en-us"
+# 多语言:英文 = / (默认),中文 = /zh/
 defaultContentLanguage = "en"
-hasCJKLanguage = true                          # 中英混排时正确处理空格与字数统计
+defaultContentLanguageInSubdir = false   # 英文不要 /en/ 前缀
+hasCJKLanguage = true                    # 中英混排时正确处理空格与字数
 
 enableRobotsTXT = true
 enableEmoji = true
@@ -22,73 +22,46 @@ pagination.pagerSize = 10
 # 代码高亮
 [markup]
   [markup.highlight]
-    noClasses = false                          # 用 CSS class 高亮,跟随 light/dark
+    noClasses = false
     codeFences = true
     guessSyntax = true
     lineNos = false
     style = "github"
   [markup.goldmark.renderer]
-    unsafe = true                              # 允许文章里写 raw HTML(KaTeX 之类要用)
-
-# 顶部菜单
-[[menu.main]]
-  identifier = "posts"
-  name = "Posts"
-  url = "/posts/"
-  weight = 10
-
-[[menu.main]]
-  identifier = "archives"
-  name = "Archives"
-  url = "/archives/"
-  weight = 20
-
-[[menu.main]]
-  identifier = "search"
-  name = "Search"
-  url = "/search/"
-  weight = 30
-
-[[menu.main]]
-  identifier = "about"
-  name = "About"
-  url = "/about/"
-  weight = 40
+    unsafe = true
 
 # 输出格式 — search 页面需要 JSON
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
 # ==========================================================================
-# PaperMod 主题参数
+# 共享主题参数(两种语言都生效)
 # ==========================================================================
 [params]
   env = "production"
-  description = "Surviving notes — paper readings, code experiments, and DNA sequence modeling."
   author = "Jiaxin"
-  defaultTheme = "auto"                        # auto / light / dark
+  defaultTheme = "auto"
   disableThemeToggle = false
 
-  # —— 极简文字优先的关键开关 ——
   ShowReadingTime = true
   ShowWordCount = true
-  ShowShareButtons = false                     # 关掉分享按钮
+  ShowShareButtons = false
   ShowPostNavLinks = true
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = true
   ShowToc = true
   TocOpen = false
   ShowRssButtonInSectionTermList = true
-  comments = false                             # 评论默认关,要开看 README 末尾说明
+  comments = false
   hidemeta = false
   hideSummary = false
 
-  # 首页用 layouts/index.html 自定义(Encyclopedia Galactica 词条),
-  # profileMode 必须关掉,否则 PaperMod 会优先用它的 profile 模板
+  # 当配置了多个 [languages] 时,PaperMod 顶部 header 会自动出现语言切换器
+  # 这里没有显式开关,加多语言就有
+
   [params.profileMode]
     enabled = false
 
-  # 社交链接(留空别的图标自动消失)
   [[params.socialIcons]]
     name = "github"
     url = "https://github.com/JiaxinLi-lipluszn"
@@ -96,7 +69,6 @@ pagination.pagerSize = 10
     name = "rss"
     url = "/index.xml"
 
-  # Fuse.js 搜索
   [params.fuseOpts]
     isCaseSensitive = false
     shouldSort = true
@@ -106,7 +78,72 @@ pagination.pagerSize = 10
     minMatchCharLength = 0
     keys = ["title", "permalink", "summary", "content"]
 
-  # —— 字体:文字优先,用系统衬线 + 等宽 ——
   [params.assets]
     disableFingerprinting = false
     favicon = "/favicon.ico"
+
+# ==========================================================================
+# 语言配置
+# ==========================================================================
+
+# ---------- English (default, served at /) ----------
+[languages.en]
+  languageName = "English"
+  languageCode = "en-us"
+  weight = 1
+  title = "Jiaxin Li"
+
+  [languages.en.params]
+    description = "Surviving notes — paper readings, code experiments, and DNA sequence modeling."
+
+  [[languages.en.menu.main]]
+    identifier = "posts"
+    name = "posts"
+    url = "/posts/"
+    weight = 10
+  [[languages.en.menu.main]]
+    identifier = "archives"
+    name = "archives"
+    url = "/archives/"
+    weight = 20
+  [[languages.en.menu.main]]
+    identifier = "search"
+    name = "search"
+    url = "/search/"
+    weight = 30
+  [[languages.en.menu.main]]
+    identifier = "about"
+    name = "about"
+    url = "/about/"
+    weight = 40
+
+# ---------- 中文 (served at /zh/) ----------
+[languages.zh]
+  languageName = "中文"
+  languageCode = "zh-cn"
+  weight = 2
+  title = "李嘉鑫"
+
+  [languages.zh.params]
+    description = "幸存的笔记 —— 论文阅读、代码实验,与 DNA 序列建模。"
+
+  [[languages.zh.menu.main]]
+    identifier = "posts"
+    name = "文章"
+    url = "/zh/posts/"
+    weight = 10
+  [[languages.zh.menu.main]]
+    identifier = "archives"
+    name = "归档"
+    url = "/zh/archives/"
+    weight = 20
+  [[languages.zh.menu.main]]
+    identifier = "search"
+    name = "搜索"
+    url = "/zh/search/"
+    weight = 30
+  [[languages.zh.menu.main]]
+    identifier = "about"
+    name = "关于"
+    url = "/zh/about/"
+    weight = 40
