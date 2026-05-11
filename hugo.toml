@@ -4,7 +4,7 @@
 # ==========================================================================
 
 baseURL = "https://jiaxinli-lipluszn.github.io/"
-title = "Jiaxin's Notes"                       # ← 改成你想要的站名
+title = "Jiaxin Li"                            # 站名,出现在 tab title 和 header
 theme = "PaperMod"
 
 languageCode = "en-us"
@@ -64,7 +64,7 @@ pagination.pagerSize = 10
 # ==========================================================================
 [params]
   env = "production"
-  description = "Notes on DNA sequence modeling, genomic foundation models, and ML for biology."
+  description = "Surviving notes — paper readings, code experiments, and DNA sequence modeling."
   author = "Jiaxin"
   defaultTheme = "auto"                        # auto / light / dark
   disableThemeToggle = false
@@ -83,22 +83,10 @@ pagination.pagerSize = 10
   hidemeta = false
   hideSummary = false
 
-  # 首页 = 个人主页(profile mode)
+  # 首页用 layouts/index.html 自定义(Encyclopedia Galactica 词条),
+  # profileMode 必须关掉,否则 PaperMod 会优先用它的 profile 模板
   [params.profileMode]
-    enabled = true
-    title = "Jiaxin Li"
-    subtitle = """I work on **DNA sequence modeling** — training and probing models that learn from raw nucleotide sequences. This is where I keep paper notes, code, and half-formed thoughts.
-"""
-    # 头像:把图片放到 static/img/avatar.png 就会自动出现;不想要先注释掉这行
-    # imageUrl = "/img/avatar.png"
-    imageTitle = "Jiaxin Li"
-    imageWidth = 120
-    imageHeight = 120
-    buttons = [
-      { name = "Posts",    url = "posts" },
-      { name = "Archives", url = "archives" },
-      { name = "About",    url = "about" },
-    ]
+    enabled = false
 
   # 社交链接(留空别的图标自动消失)
   [[params.socialIcons]]

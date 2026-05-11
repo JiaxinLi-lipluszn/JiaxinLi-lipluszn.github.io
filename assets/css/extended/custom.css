@@ -95,3 +95,130 @@ code, pre, .post-content code {
 
 /* 去掉首页 hover 抬起阴影,保持平面 */
 .first-entry, .post-entry { box-shadow: none !important; }
+
+/* ==========================================================================
+ * 首页:Encyclopedia Galactica 词条样式
+ * ========================================================================== */
+
+.encyclopedia-entry {
+  max-width: 640px;
+  margin: 3rem auto 4rem;
+  padding: 0 1.25rem;
+}
+
+.entry-masthead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: "JetBrains Mono", "SF Mono", Menlo, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+  margin-bottom: 2.5rem;
+}
+
+.entry-headword {
+  font-family: "Iowan Old Style", "Palatino", "Hoefler Text", "Songti SC", serif;
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  line-height: 1.05;
+  margin: 0 0 2rem;
+}
+
+.entry-body p {
+  font-family: "Iowan Old Style", "Palatino", "Hoefler Text", "Songti SC", serif;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  margin: 0 0 1.35rem;
+  text-align: justify;
+  hyphens: auto;
+  color: var(--content);
+}
+
+/* 首段首字母放大 — encyclopedia 风格的 drop cap */
+.entry-body p:first-of-type::first-letter {
+  font-family: "Iowan Old Style", "Palatino", serif;
+  font-size: 3.5em;
+  float: left;
+  line-height: 0.82;
+  margin: 0.04em 0.12em -0.05em 0;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.entry-body strong { font-weight: 600; }
+.entry-body em { font-style: italic; color: var(--secondary); }
+
+/* small-caps for institution names (faux small-caps via letter-spacing) */
+.entry-sc {
+  font-variant: small-caps;
+  letter-spacing: 0.04em;
+}
+
+.entry-nav {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: "JetBrains Mono", "SF Mono", Menlo, monospace;
+  font-size: 13px;
+}
+.entry-nav a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.entry-nav a:hover { text-decoration-thickness: 2px; }
+.entry-nav-sep { color: var(--tertiary); }
+
+/* recent fragments — encyclopedia "cross-references" */
+.entry-recent {
+  margin-top: 3rem;
+}
+.entry-recent-label {
+  font-family: "JetBrains Mono", "SF Mono", Menlo, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  margin-bottom: 0.9rem;
+}
+.entry-recent-item {
+  display: flex;
+  gap: 1rem;
+  padding: 0.45rem 0;
+  font-family: "Iowan Old Style", "Palatino", "Songti SC", serif;
+  font-size: 0.98rem;
+  border-bottom: 1px dotted var(--border);
+  color: var(--content);
+  text-decoration: none;
+}
+.entry-recent-item:hover .entry-recent-title { text-decoration: underline; text-underline-offset: 2px; }
+.entry-recent-date {
+  font-family: "JetBrains Mono", "SF Mono", Menlo, monospace;
+  font-size: 0.78rem;
+  color: var(--secondary);
+  min-width: 80px;
+  padding-top: 3px;
+}
+.entry-recent-empty {
+  font-family: "Iowan Old Style", "Palatino", serif;
+  font-size: 0.92rem;
+  color: var(--secondary);
+  font-style: italic;
+}
+
+/* 隐藏 PaperMod 首页默认的 profile / homeinfo / posts list,因为我们用了自定义 layout */
+.main > .profile,
+.main > .home-info,
+.main > .first-entry,
+.main > .post-entry { display: none !important; }
+
