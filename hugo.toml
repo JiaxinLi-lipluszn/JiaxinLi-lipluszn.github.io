@@ -83,27 +83,22 @@ pagination.pagerSize = 10
   hidemeta = false
   hideSummary = false
 
-  # 首页样式 — profileMode 显示一段简介 + 链接;关掉后是文章列表流
+  # 首页 = 个人主页(profile mode)
   [params.profileMode]
-    enabled = false
-    title = "Jiaxin"
-    subtitle = "DNA sequence modeling, genomic ML, and adjacent ideas."
-    imageUrl = ""
+    enabled = true
+    title = "Jiaxin Li"
+    subtitle = """I work on **DNA sequence modeling** — training and probing models that learn from raw nucleotide sequences. This is where I keep paper notes, code, and half-formed thoughts.
+"""
+    # 头像:把图片放到 static/img/avatar.png 就会自动出现;不想要先注释掉这行
+    # imageUrl = "/img/avatar.png"
+    imageTitle = "Jiaxin Li"
     imageWidth = 120
     imageHeight = 120
     buttons = [
-      { name = "Posts", url = "posts" },
+      { name = "Posts",    url = "posts" },
       { name = "Archives", url = "archives" },
+      { name = "About",    url = "about" },
     ]
-
-  # 首页用列表流(更纯文字)
-  [params.homeInfoParams]
-    Title = "Hi 👋"
-    Content = """
-Welcome. I write here about **DNA sequence modeling**, genomic foundation models, and adjacent ideas in ML for biology.
-
-Posts are usually paper notes, code walkthroughs, or half-formed thoughts I want to come back to.
-"""
 
   # 社交链接(留空别的图标自动消失)
   [[params.socialIcons]]
