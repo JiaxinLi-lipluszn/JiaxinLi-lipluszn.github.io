@@ -3,7 +3,7 @@
 # 文档:https://github.com/adityatelange/hugo-PaperMod/wiki
 # ==========================================================================
 
-baseURL = "https://YOUR_USERNAME.github.io/"   # ← 部署后改成你的 username.github.io
+baseURL = "https://jiaxinli-lipluszn.github.io/"
 title = "Jiaxin's Notes"                       # ← 改成你想要的站名
 theme = "PaperMod"
 
@@ -108,7 +108,7 @@ Posts are usually paper notes, code walkthroughs, or half-formed thoughts I want
   # 社交链接(留空别的图标自动消失)
   [[params.socialIcons]]
     name = "github"
-    url = "https://github.com/YOUR_USERNAME"
+    url = "https://github.com/JiaxinLi-lipluszn"
   [[params.socialIcons]]
     name = "rss"
     url = "/index.xml"
