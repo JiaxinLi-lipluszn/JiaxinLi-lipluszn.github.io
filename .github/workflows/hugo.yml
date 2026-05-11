@@ -48,6 +48,9 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+        with:
+          # 第一次跑 workflow 时自动启用 Pages,不用先去 Settings 手点
+          enablement: true
 
       - name: Build with Hugo
         env:
